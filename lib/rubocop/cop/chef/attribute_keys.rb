@@ -78,22 +78,13 @@ module RuboCop
         def autocorrect(node)
           lambda do |corrector|
             key_string = node.children.first.to_s
-            # Figure out what the replacement should look like, either a symbol
-            # or a string, and for strings use the Style/StringLiterals cop
-            # config to know which type of string to use.
             key_replacement = if style == :symbols
               key_string.to_sym.inspect
-            elsif string_literals_config.to_sym == :single_quotes
-              to_string_literal(key_string)
-            else # double_quotes
+            else # strings
               key_string.inspect
             end
             corrector.replace(node.loc.expression, key_replacement)
           end
-        end
-
-        def string_literals_config
-          config.for_cop('Style/StringLiterals')['EnforcedStyle'] || :double_quotes
         end
 
       end
