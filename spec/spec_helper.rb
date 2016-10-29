@@ -9,6 +9,9 @@ spec_helper_glob = File.expand_path('{support,shared}/*.rb', __dir__)
 Dir.glob(spec_helper_glob).map(&method(:require))
 
 RSpec.configure do |config|
+  # Basic configuraiton
+  config.run_all_when_everything_filtered = true
+  config.filter_run(:focus)
   config.order = :random
 
   # Define spec metadata for all rspec cop spec files
