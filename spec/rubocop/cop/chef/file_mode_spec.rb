@@ -76,4 +76,16 @@ describe RuboCop::Cop::Chef::FileMode do
   include_examples 'autocorrect',
                    'mode 01644',
                    'mode "1644"'
+
+  include_examples 'autocorrect',
+                   'mode 0o644',
+                   'mode "644"'
+
+  include_examples 'autocorrect',
+                   'mode 0O644',
+                   'mode "644"'
+
+  include_examples 'autocorrect',
+                   'mode 0x284',
+                   'mode "644"'
 end

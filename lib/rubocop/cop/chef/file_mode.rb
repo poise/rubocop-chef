@@ -54,7 +54,7 @@ module RuboCop
         private
 
         def is_octal?(node)
-          node.source.start_with?('0')
+          node.source =~ /^0o?\d+/i
         end
 
       end
