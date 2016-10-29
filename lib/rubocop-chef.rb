@@ -17,3 +17,4 @@ RuboCop::Chef::Inject.defaults!
 
 # cops
 require 'rubocop/cop/chef/attribute_keys'
+require 'rubocop/cop/chef/file_mode'
