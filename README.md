@@ -8,8 +8,8 @@ Chef-specific analysis for your projects, as an extension to
 ## Conversion Progress
 
 * ~~FC001 Use strings in preference to symbols to access node attributes~~ Chef/AttributeKeys
-* FC002 Avoid string interpolation where not required
-* FC003 Check whether you are running with chef server before using server-specific features
+* ~~FC002 Avoid string interpolation where not required~~ Style/UnneededInterpolation
+* ~~FC003 Check whether you are running with chef server before using server-specific features~~ Deprecated because solo supports search
 * FC004 Use a service resource to start and stop services
 * FC005 Avoid repetition of resource declarations
 * FC006 Mode should be quoted or fully specified when setting file permissions
