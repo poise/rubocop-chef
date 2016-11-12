@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 RSpec.describe ExpectViolation::Expectation do
   subject(:expectation) { described_class.new(string) }
 

@@ -23,6 +23,10 @@ Chef/AttributeKeys:
   - strings
   - symbols
 
+Chef/ServiceResource:
+  Description: Use a service resource to start and stop services
+  Enabled: true
+
 RSpec/AnyInstance:
   Description: Check that instances are not being stubbed globally.
   Enabled: true
