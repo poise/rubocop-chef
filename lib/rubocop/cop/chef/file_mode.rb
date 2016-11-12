@@ -41,7 +41,6 @@ module RuboCop
           end
         end
 
-
         def autocorrect(node)
           lambda do |corrector|
             # If it was an octal literal, make sure we write out the right number.
