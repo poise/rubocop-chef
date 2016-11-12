@@ -32,7 +32,7 @@ module RuboCop
       #
       # @example when configuration is `EnforcedStyle: strings`
       #
-      #   # bar
+      #   # bad
       #   node[:foo]
       #
       #   # good
