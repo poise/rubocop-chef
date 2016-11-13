@@ -11,7 +11,7 @@ require 'rubocop/chef/inject'
 # require 'rubocop/chef/util'
 # require 'rubocop/chef/language'
 # require 'rubocop/chef/language/node_pattern'
-# require 'rubocop/chef/spec_only'
+require 'rubocop/chef/cookbook_only'
 
 RuboCop::Chef::Inject.defaults!
 
