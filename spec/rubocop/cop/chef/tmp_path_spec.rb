@@ -22,7 +22,7 @@ describe RuboCop::Cop::Chef::TmpPath, :config do
   it 'registers an offense when hardcoding a path in /tmp' do
     expect_violation(<<-RUBY)
       remote_file '/tmp/large-file.tar.gz' do
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^ Use file_cache_path rather than hard-coding tmp paths
+                  ^^^^^^^^^^^^^^^^^^^^^^^^ Use file_cache_path rather than hard-coding tmp paths
         source 'http://www.example.org/large-file.tar.gz'
       end
     RUBY

@@ -33,22 +33,16 @@ module RuboCop
         PATTERN
 
         def on_send(node)
-          puts "on send"
-          puts node
           remote_file?(node) do |command|
-            print command
             if has_hardcoded_tmp?(command)
-              puts "found it"
               add_offense(command, :expression, MSG, :error)
             end
           end
         end
 
         def has_hardcoded_tmp?(path)
-          puts "has_hardcoded_tmp"
-          puts path.to_s
-          puts path.to_s.start_with?("/tmp/")
-          path.to_s.start_with?("/tmp/")
+          path_str = path.to_s.scan(/"(.*)"/)[0][0]
+          path_str.start_with?("/tmp/")
         end
 
       end
