@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name = 'rubocop-chef'
   spec.summary = 'Code style checking for Chef cookbooks'
   spec.description = spec.summary
-  spec.homepage = 'http://github.com/backus/rubocop-chef'
+  spec.homepage = 'https://github.com/poise/rubocop-chef'
   spec.authors = ['Noah Kantrowitz', 'Tim Smith']
   spec.email = ['noah@coderanger.net', 'tsmith@chef.io']
   spec.licenses = ['Apache 2.0', 'MIT']
