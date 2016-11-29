@@ -17,7 +17,7 @@ Chef-specific analysis for your projects, as an extension to
 * FC008 Generated cookbook metadata needs updating
 * FC009 Resource attribute not recognised
 * FC010 Invalid search syntax
-* ~~FC011 Missing README in markdown format~~
+* FC011 Missing README in markdown format
 * FC012 Use Markdown for README rather than RDoc
 * ~~FC013 Use file_cache_path rather than hard-coding tmp paths~~
 * FC014 Consider extracting long ruby_block to library
