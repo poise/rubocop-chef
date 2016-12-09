@@ -17,7 +17,7 @@
 module RuboCop
   module Cop
     module Chef
-      # Checks for incorrectly formatted Copyright comments.
+      # Checks for incorrectly formatted headers
       #
       # @example
       #
@@ -27,6 +27,8 @@ module RuboCop
       #   Attributes default.rb
       #   License Apache2
       #   Cookbook tomcat
+      #   Cookbook Name:: Tomcat
+      #   Attributes File:: default
       #
       #   # good
       #   Copyright:: 2013-2016 Chef Software, Inc.
@@ -35,15 +37,15 @@ module RuboCop
       #   License:: Apache License, Version 2.0
       #   Cookbook Name:: Tomcat
       #
-      class YardComments < Cop
-        MSG = 'Properly format comment headers for YARD'.freeze
+      class CommentFormat < Cop
+        MSG = 'Properly format header comments'.freeze
 
         def investigate(processed_source)
           return unless processed_source.ast
           processed_source.comments.each do |comment|
-            next unless comment.inline? # yard headers aren't in blocks
+            next unless comment.inline? # headers aren't in blocks
 
-            if invalid_yard_comment?(comment)
+            if invalid_comment?(comment)
               add_offense(comment, comment.loc.expression, MSG)
             end
           end
@@ -52,16 +54,16 @@ module RuboCop
         private
 
         def autocorrect(comment)
-          # Extract the type and the actual value. Strip out "Name"
+          # Extract the type and the actual value. Strip out "Name" or "File"
           # 'Cookbook Name' should be 'Cookbook'. Also skip a :: if present
-          match = /^# ?([A-Za-z]+)\s?(?:Name)?(?:::)?(.*)/.match(comment.text)
+          match = /^# ?([A-Za-z]+)\s?(?:Name|File)?(?:::)?(.*)/.match(comment.text)
           comment_type, value = match.captures
           correct_comment = "# #{comment_type}:: #{value}"
 
           ->(corrector) { corrector.replace(comment.loc.expression, correct_comment) }
         end
 
-        def invalid_yard_comment?(comment)
+        def invalid_comment?(comment)
           comment_types = %w(Author Cookbook Library Attribute Copyright Recipe Resource Definition License)
           comment_types.any? do |comment_type|
             /^#\s*#{comment_type}\s+/.match(comment.text)

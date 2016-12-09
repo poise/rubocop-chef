@@ -17,7 +17,7 @@
 module RuboCop
   module Cop
     module Chef
-      # Checks for incorrectly formatted Copyright comments.
+      # Checks for incorrectly formatted copyright comments.
       #
       # @example
       #
@@ -35,15 +35,15 @@ module RuboCop
       #   Copyright:: 2013-2016 Tim Smith
       #   Copyright:: 2016 37Signals, Inc.
       #
-      class YardCopyrightComments < Cop
+      class CopyrightCommentFormat < Cop
         require 'date'
 
-        MSG = 'Properly format copyrights in YARD headers'.freeze
+        MSG = 'Properly format copyrights header comments'.freeze
 
         def investigate(processed_source)
           return unless processed_source.ast
           processed_source.comments.each do |comment|
-            next unless comment.inline? # yard headers aren't in blocks
+            next unless comment.inline? # headers aren't in blocks
 
             if invalid_copyright_comment?(comment)
               add_offense(comment, comment.loc.expression, MSG)
@@ -74,7 +74,7 @@ module RuboCop
         end
 
         def copyright_holder(comment)
-          # Grab just the company / individual name w/o YARDness or dates
+          # Grab just the company / individual name w/o :: or dates
           match = /(?:.*[0-9]{4}|Copyright\W*)(?:,)?(?:\s)?(.*)/.match(comment.text)
           marketing_sanitizer(match.captures[0])
         end
