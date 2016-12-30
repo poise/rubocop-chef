@@ -56,7 +56,7 @@ module RuboCop
         def autocorrect(comment)
           # Extract the type and the actual value. Strip out "Name" or "File"
           # 'Cookbook Name' should be 'Cookbook'. Also skip a :: if present
-          match = /^# ?([A-Za-z]+)\s?(?:Name|File)?(?:::)?(.*)/.match(comment.text)
+          match = /^# ?([A-Za-z]+)\s?(?:Name|File)?(?:::)?\s(.*)/.match(comment.text)
           comment_type, value = match.captures
           correct_comment = "# #{comment_type}:: #{value}"
 
