@@ -33,3 +33,11 @@ Chef/AttributeKeys:
 Chef/ServiceResource:
   Description: Use a service resource to start and stop services
   Enabled: true
+
+Chef/CopyrightCommentFormat:
+  Description: Properly format copyright dates in comment blocks and ensure dates are up to date
+  Enabled: false
+
+Chef/CommentFormat:
+  Description: Use Chef's format for comment headers
+  Enabled: true
