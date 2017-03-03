@@ -35,7 +35,7 @@ module RuboCop
       #   Recipe:: default.rb
       #   Attributes:: default.rb
       #   License:: Apache License, Version 2.0
-      #   Cookbook Name:: Tomcat
+      #   Cookbook:: Tomcat
       #
       class CommentFormat < Cop
         MSG = 'Properly format header comments'.freeze
