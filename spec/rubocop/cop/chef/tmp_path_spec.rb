@@ -28,4 +28,12 @@ describe RuboCop::Cop::Chef::TmpPath, :config do
     RUBY
   end
 
+  it 'doesn\' register an offense when using file_cache_path' do
+    expect_no_violations(<<-RUBY)
+      remote_file "\#\{Chef::Config[:file_cache_path]\}/large-file.tar.gz" do
+        source 'http://www.example.org/large-file.tar.gz'
+      end
+    RUBY
+  end
+
 end
