@@ -15,7 +15,7 @@ Chef-specific analysis for your projects, as an extension to
 * ~~FC006 Mode should be quoted or fully specified when setting file permissions~~ Chef/FileMode
 * FC007 Ensure recipe dependencies are reflected in cookbook metadata
 * FC008 Generated cookbook metadata needs updating
-* FC009 Resource attribute not recognised
+* ~~FC009 Resource attribute not recognised~~ Deprecated as this is better done in ChefSpec
 * FC010 Invalid search syntax
 * FC011 Missing README in markdown format
 * FC012 Use Markdown for README rather than RDoc
@@ -42,8 +42,8 @@ Chef-specific analysis for your projects, as an extension to
 * FC033 Missing template
 * FC034 Unused template variables
 * FC035 Template uses node attribute directly
-* FC037 Invalid notification action
-* FC038 Invalid resource action
+* ~~FC037 Invalid notification action~~ Deprecated as this is better done in ChefSpec
+* ~~FC038 Invalid resource action~~ Deprecated as this is better done in ChefSpec
 * FC039 Node method cannot be accessed with key
 * FC040 Execute resource used to run git commands
 * FC041 Execute resource used to run curl or wget commands
