@@ -15,7 +15,7 @@ require 'rubocop/chef/cookbook_only'
 
 RuboCop::Chef::Inject.defaults!
 
-# cops
+# Chef specific cops
 require 'rubocop/cop/chef/attribute_keys'
 require 'rubocop/cop/chef/file_mode'
 require 'rubocop/cop/chef/service_resource'
