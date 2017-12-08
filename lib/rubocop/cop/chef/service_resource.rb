@@ -26,7 +26,6 @@ module RuboCop
       #   command "/sbin/service/memcached start"
       #
       class ServiceResource < Cop
-
         MSG = 'Use a service resource to start and stop services'.freeze
 
         def_node_matcher :execute_command?, <<-PATTERN
@@ -36,19 +35,18 @@ module RuboCop
         def on_send(node)
           execute_command?(node) do |command|
             if starts_service?(command)
-              add_offense(command, :expression, MSG, :error)
+              add_offense(command, location: :expression, message: MSG, severity: :error)
             end
           end
         end
 
         def starts_service?(cmd)
           cmd_str = cmd.to_s
-          (cmd_str.include?("/etc/init.d") || ["service ", "/sbin/service ",
-                 "start ", "stop ", "invoke-rc.d "].any? do |service_cmd|
-                   cmd_str.start_with?(service_cmd)
-                 end) && %w{start stop restart reload}.any? { |a| cmd_str.include?(a) }
+          (cmd_str.include?('/etc/init.d') || ['service ', '/sbin/service ',
+                                               'start ', 'stop ', 'invoke-rc.d '].any? do |service_cmd|
+             cmd_str.start_with?(service_cmd)
+           end) && %w[start stop restart reload].any? { |a| cmd_str.include?(a) }
         end
-
       end
     end
   end

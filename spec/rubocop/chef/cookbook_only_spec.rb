@@ -29,7 +29,7 @@ describe RuboCop::Chef::CookbookOnly do
       end
 
       def on_send(node)
-        add_offense(node, :expression, 'boom')
+        add_offense(node, location: :expression, message: 'boom')
       end
     end
   end
