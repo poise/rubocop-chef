@@ -29,7 +29,6 @@ module RuboCop
       #
       #
       class TmpPath < Cop
-
         MSG = 'Use file_cache_path rather than hard-coding tmp paths'.freeze
 
         def_node_matcher :remote_file?, <<-PATTERN
@@ -46,14 +45,13 @@ module RuboCop
 
         def has_hardcoded_tmp?(path)
           path_str = path.to_s.scan(/"(.*)"/)[0][0]
-          path_str.start_with?("/tmp/")
+          path_str.start_with?('/tmp/')
         end
 
         def has_file_cache_path?(path)
           path_str = path.to_s.scan(/"(.*)"/)[0][0]
           path_str.start_with?("\#\{Chef::Config[:file_cache_path]\}")
         end
-
       end
     end
   end

@@ -35,5 +35,4 @@ describe RuboCop::Cop::Chef::ServiceResource, :config do
       end
     RUBY
   end
-
 end

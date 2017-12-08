@@ -79,14 +79,13 @@ module RuboCop
           lambda do |corrector|
             key_string = node.children.first.to_s
             key_replacement = if style == :symbols
-              key_string.to_sym.inspect
-            else # strings
-              key_string.inspect
+                                key_string.to_sym.inspect
+                              else # strings
+                                key_string.inspect
             end
             corrector.replace(node.loc.expression, key_replacement)
           end
         end
-
       end
     end
   end

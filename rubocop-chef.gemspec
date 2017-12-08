@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 $LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
 require 'rubocop/chef/version'
 
@@ -29,11 +27,11 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'rubocop', '>= 0.39'
 
+  spec.add_development_dependency 'adamantium'
+  spec.add_development_dependency 'anima'
+  spec.add_development_dependency 'concord'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec', '>= 3.4'
   spec.add_development_dependency 'simplecov'
-  spec.add_development_dependency 'anima'
-  spec.add_development_dependency 'concord'
-  spec.add_development_dependency 'adamantium'
   spec.add_development_dependency 'yard'
 end

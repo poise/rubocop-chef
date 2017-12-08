@@ -55,7 +55,6 @@ module RuboCop
         def is_octal?(node)
           node.source =~ /^0o?\d+/i
         end
-
       end
     end
   end

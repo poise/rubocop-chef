@@ -43,7 +43,7 @@ describe RuboCop::Chef::CookbookOnly do
     end
 
     context 'with the metadata segment enabled' do
-      let(:segments) { {metadata: true} }
+      let(:segments) { { metadata: true } }
 
       it 'registers an offense' do
         expect_violation(<<-RUBY, filename: 'metadata.rb')
@@ -54,7 +54,7 @@ describe RuboCop::Chef::CookbookOnly do
     end # /context with the metadata segment enabled
 
     context 'with the metadata segment disabled' do
-      let(:segments) { {metadata: false} }
+      let(:segments) { { metadata: false } }
 
       it 'ignores the source' do
         expect_no_violations(<<-RUBY, filename: 'metadata.rb')
@@ -73,7 +73,7 @@ describe RuboCop::Chef::CookbookOnly do
     end
 
     context 'with the recipes segment enabled' do
-      let(:segments) { {recipes: true} }
+      let(:segments) { { recipes: true } }
 
       it 'registers an offense' do
         expect_violation(<<-RUBY, filename: 'recipes/default.rb')
@@ -84,7 +84,7 @@ describe RuboCop::Chef::CookbookOnly do
     end # /context with the recipes segment enabled
 
     context 'with the recipes segment disabled' do
-      let(:segments) { {recipes: false} }
+      let(:segments) { { recipes: false } }
 
       it 'ignores the source' do
         expect_no_violations(<<-RUBY, filename: 'recipes/default.rb')
@@ -95,14 +95,14 @@ describe RuboCop::Chef::CookbookOnly do
   end # /context when the source path is recipes/default.rb
 
   context 'when the source path is recipes/ignored.rb' do
-      it 'ignores the source' do
-        expect_no_violations(<<-RUBY, filename: 'recipes/ignored.rb')
-          foo(1)
-        RUBY
-      end
+    it 'ignores the source' do
+      expect_no_violations(<<-RUBY, filename: 'recipes/ignored.rb')
+        foo(1)
+      RUBY
+    end
 
     context 'with the recipes segment enabled' do
-      let(:segments) { {recipes: true} }
+      let(:segments) { { recipes: true } }
 
       it 'ignores the source' do
         expect_no_violations(<<-RUBY, filename: 'recipes/ignored.rb')
@@ -112,7 +112,7 @@ describe RuboCop::Chef::CookbookOnly do
     end # /context with the recipes segment enabled
 
     context 'with the recipes segment disabled' do
-      let(:segments) { {recipes: false} }
+      let(:segments) { { recipes: false } }
 
       it 'ignores the source' do
         expect_no_violations(<<-RUBY, filename: 'recipes/ignored.rb')
@@ -124,7 +124,7 @@ describe RuboCop::Chef::CookbookOnly do
 
   context 'when custom patterns are specified' do
     let(:all_cop_config) do
-      {'ChefRecipes' => {'Patterns' => ['chef/recipes/.*\\.rb']}}
+      { 'ChefRecipes' => { 'Patterns' => ['chef/recipes/.*\\.rb'] } }
     end
 
     it 'registers offenses when the path matches a custom specified pattern' do
