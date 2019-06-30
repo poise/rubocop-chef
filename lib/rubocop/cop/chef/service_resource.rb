@@ -1,5 +1,5 @@
 #
-# Copyright 2016, Chris Henry
+# Copyright:: 2016, Chris Henry
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -45,7 +45,7 @@ module RuboCop
           (cmd_str.include?('/etc/init.d') || ['service ', '/sbin/service ',
                                                'start ', 'stop ', 'invoke-rc.d '].any? do |service_cmd|
              cmd_str.start_with?(service_cmd)
-           end) && %w[start stop restart reload].any? { |a| cmd_str.include?(a) }
+           end) && %w(start stop restart reload).any? { |a| cmd_str.include?(a) }
         end
       end
     end

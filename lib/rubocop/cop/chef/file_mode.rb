@@ -1,5 +1,5 @@
 #
-# Copyright 2016, Noah Kantrowitz
+# Copyright:: 2016, Noah Kantrowitz
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -37,14 +37,14 @@ module RuboCop
 
         def on_send(node)
           resource_mode?(node) do |mode_int|
-            add_offense(mode_int, location: :expression, message: MSG, severity: is_octal?(mode_int) ? :warning : :error)
+            add_offense(mode_int, location: :expression, message: MSG, severity: octal?(mode_int) ? :warning : :error)
           end
         end
 
         def autocorrect(node)
           lambda do |corrector|
             # If it was an octal literal, make sure we write out the right number.
-            replacement_base = is_octal?(node) ? 8 : 10
+            replacement_base = octal?(node) ? 8 : 10
             replacement_mode = node.children.first.to_s(replacement_base)
             corrector.replace(node.loc.expression, replacement_mode.inspect)
           end
@@ -52,7 +52,7 @@ module RuboCop
 
         private
 
-        def is_octal?(node)
+        def octal?(node)
           node.source =~ /^0o?\d+/i
         end
       end

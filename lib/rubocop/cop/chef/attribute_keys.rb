@@ -1,5 +1,5 @@
 #
-# Copyright 2016, Noah Kantrowitz
+# Copyright:: 2016, Noah Kantrowitz
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -82,7 +82,7 @@ module RuboCop
                                 key_string.to_sym.inspect
                               else # strings
                                 key_string.inspect
-            end
+                              end
             corrector.replace(node.loc.expression, key_replacement)
           end
         end

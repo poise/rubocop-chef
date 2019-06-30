@@ -19,7 +19,7 @@ module RuboCop
     #
     module CookbookOnly
       DEFAULT_CONFIGURATION = CONFIG.fetch('AllCops')
-      COOKBOOK_SEGMENTS = %w{attributes definitions libraries metadata providers recipes resources}
+      COOKBOOK_SEGMENTS = %w(attributes definitions libraries metadata providers recipes resources).freeze
 
       def relevant_file?(file)
         cookbook_pattern =~ file && super
@@ -62,7 +62,7 @@ module RuboCop
       extend ClassMethods
     end
 
-    def self.CookbookOnly(segments)
+    def self.CookbookOnly(segments) # rubocop: disable Naming/MethodName
       Module.new do |mod|
         mod.define_singleton_method(:included) do |klass|
           super(klass)
