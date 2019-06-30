@@ -42,7 +42,8 @@ module ExpectViolation
     VIOLATION = :violation
     SOURCE    = :line
 
-    include Adamantium, Concord.new(:string)
+    include Concord.new(:string)
+    include Adamantium
 
     def source
       source_map.to_s
@@ -125,9 +126,9 @@ module ExpectViolation
         )
       end
 
-      include Anima.new(:message, :column_range, :line_number),
-              Adamantium,
-              Comparable
+      include Comparable
+      include Adamantium
+      include Anima.new(:message, :column_range, :line_number)
 
       def <=>(other)
         to_a <=> other.to_a
@@ -142,7 +143,8 @@ module ExpectViolation
       class Parser
         COLUMN_PATTERN = /^ *(?<carets>\^\^*) (?<message>.+)$/
 
-        include Concord.new(:text), Adamantium
+        include Adamantium
+        include Concord.new(:text)
 
         def column_range
           Range.new(*match.offset(:carets), true)

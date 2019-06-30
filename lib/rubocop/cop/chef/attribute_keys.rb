@@ -68,10 +68,10 @@ module RuboCop
         def on_node_attribute_access(node)
           if node.type == :str
             style_detected(:strings)
-            add_offense(node, :expression, MSG % style) if style == :symbols
+            add_offense(node, location: :expression, message: MSG % style) if style == :symbols
           elsif node.type == :sym
             style_detected(:symbols)
-            add_offense(node, :expression, MSG % style) if style == :strings
+            add_offense(node, location: :expression, message: MSG % style) if style == :strings
           end
         end
 
@@ -79,14 +79,13 @@ module RuboCop
           lambda do |corrector|
             key_string = node.children.first.to_s
             key_replacement = if style == :symbols
-              key_string.to_sym.inspect
-            else # strings
-              key_string.inspect
+                                key_string.to_sym.inspect
+                              else # strings
+                                key_string.inspect
             end
             corrector.replace(node.loc.expression, key_replacement)
           end
         end
-
       end
     end
   end

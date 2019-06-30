@@ -10,7 +10,7 @@ Chef-specific analysis for your projects, as an extension to
 * ~~FC001 Use strings in preference to symbols to access node attributes~~ Chef/AttributeKeys
 * ~~FC002 Avoid string interpolation where not required~~ Style/UnneededInterpolation
 * ~~FC003 Check whether you are running with chef server before using server-specific features~~ Deprecated because solo supports search
-* FC004 Use a service resource to start and stop services
+* ~~FC004 Use a service resource to start and stop services~~
 * FC005 Avoid repetition of resource declarations
 * ~~FC006 Mode should be quoted or fully specified when setting file permissions~~ Chef/FileMode
 * FC007 Ensure recipe dependencies are reflected in cookbook metadata
@@ -19,7 +19,7 @@ Chef-specific analysis for your projects, as an extension to
 * FC010 Invalid search syntax
 * FC011 Missing README in markdown format
 * FC012 Use Markdown for README rather than RDoc
-* FC013 Use file_cache_path rather than hard-coding tmp paths
+* ~~FC013 Use file_cache_path rather than hard-coding tmp paths~~
 * FC014 Consider extracting long ruby_block to library
 * FC015 Consider converting definition to a Custom Resource
 * FC016 LWRP does not declare a default action

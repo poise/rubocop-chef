@@ -37,7 +37,7 @@ module RuboCop
 
         def on_send(node)
           resource_mode?(node) do |mode_int|
-            add_offense(mode_int, :expression, MSG, is_octal?(mode_int) ? :warning : :error)
+            add_offense(mode_int, location: :expression, message: MSG, severity: is_octal?(mode_int) ? :warning : :error)
           end
         end
 
@@ -55,7 +55,6 @@ module RuboCop
         def is_octal?(node)
           node.source =~ /^0o?\d+/i
         end
-
       end
     end
   end

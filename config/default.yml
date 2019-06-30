@@ -34,6 +34,10 @@ Chef/ServiceResource:
   Description: Use a service resource to start and stop services
   Enabled: true
 
+Chef/TmpPath:
+  Description: Use file_cache_path rather than hard-coding tmp paths
+  Enabled: true
+
 Chef/CopyrightCommentFormat:
   Description: Properly format copyright dates in comment blocks and ensure dates are up to date
   Enabled: false

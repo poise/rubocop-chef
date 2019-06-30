@@ -16,22 +16,22 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::Chef::ServiceResource, :config do
+describe RuboCop::Cop::Chef::TmpPath, :config do
   subject(:cop) { described_class.new(config) }
 
-  it 'registers an offense when starting a service in execute resource' do
+  it 'registers an offense when hardcoding a path in /tmp' do
     expect_violation(<<-RUBY)
-      execute 'apache_start' do
-        command '/etc/init.d/httpd start'
-                ^^^^^^^^^^^^^^^^^^^^^^^^^ Use a service resource to start and stop services
+      remote_file '/tmp/large-file.tar.gz' do
+                  ^^^^^^^^^^^^^^^^^^^^^^^^ Use file_cache_path rather than hard-coding tmp paths
+        source 'http://www.example.org/large-file.tar.gz'
       end
     RUBY
   end
 
-  it 'does not register an offense when running a normal command' do
+  it "doesn't register an offense when using file_cache_path" do
     expect_no_violations(<<-RUBY)
-      execute 'apache_start' do
-        command 'echo "not starting a service"'
+      remote_file "\#\{Chef::Config[:file_cache_path]\}/large-file.tar.gz" do
+        source 'http://www.example.org/large-file.tar.gz'
       end
     RUBY
   end

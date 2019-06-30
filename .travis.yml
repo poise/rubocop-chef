@@ -1,7 +1,16 @@
 sudo: false
 cache: bundler
 language: ruby
-rvm: "2.3.1"
+rvm:
+  - 2.3.5
+  - 2.4.2
+  - ruby-head
+matrix:
+  allow_failures:
+    - rvm: ruby-head
+branches:
+  only:
+    - master
 before_install:
 - if [[ $BUNDLE_GEMFILE == *master.gemfile ]]; then gem update --system; fi
 - gem --version
